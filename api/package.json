@@ -1,0 +1,19 @@
+{
+	"devDependencies": {
+		"@tsconfig/node20": "^20.1.0",
+		"@types/node": "^20.4.2",
+		"dotenv": "^16.3.1",
+		"drizzle-kit": "^0.19.6",
+		"fastify": "^4.19.2",
+		"typescript": "^5.1.6"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"start": "node src/index.js"
+	},
+	"type": "module",
+	"dependencies": {
+		"@planetscale/database": "^1.8.0",
+		"drizzle-orm": "^0.27.2"
+	}
+}
