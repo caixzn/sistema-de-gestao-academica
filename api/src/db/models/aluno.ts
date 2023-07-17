@@ -4,7 +4,7 @@ import { InferModel, relations } from "drizzle-orm";
 import { curso } from "./curso.js";
 
 export const aluno = mysqlTable('aluno', {
-    id: bigint('id', { mode: 'bigint' }).primaryKey().notNull(),
+    id: bigint('id', { mode: 'bigint' }).primaryKey().unique().notNull(),
     dataNascimento: date('data_nascimento'),
     dataIngresso: date('data_ingresso'),
     cursoId: bigint('curso_id', { mode: 'bigint' })

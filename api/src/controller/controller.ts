@@ -1,6 +1,7 @@
 export default interface Route {
     create(): boolean;
-    read(): boolean;
+    find(): boolean;
+    findAll(): boolean;
     update(): boolean;
     delete(): boolean;
 }

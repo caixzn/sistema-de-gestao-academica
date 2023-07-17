@@ -9,4 +9,8 @@ const connection = connect({
     password: process.env.DATABASE_PASSWORD
 });
 
-export default drizzle(connection);
+const db = drizzle(connection);
+
+await migrate(db, { migrationsFolder: './src/db/migrations' });
+
+export default db;
