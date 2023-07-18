@@ -3,6 +3,7 @@ import { InferModel, relations } from 'drizzle-orm';
 import { aluno } from './aluno.js';
 import { professor } from './professor.js';
 import { endereco } from './endereco.js';
+import { telefone } from './telefone.js';
 
 export const pessoa = mysqlTable('pessoa', {
     id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
@@ -22,8 +23,8 @@ export const pessoaRel = relations(pessoa, ({ one, many }) => ({
         fields: [pessoa.id],
         references: [professor.id]
     }),
-    enderecos: many(endereco)
+    enderecos: many(endereco),
+    telefones: many(telefone)
 }));
 
-export type Pessoa = InferModel<typeof pessoa>;
-export type PessoaCreate = InferModel<typeof pessoa, 'insert'>;
+export type PessoaSchema = InferModel<typeof pessoa, 'insert'>;

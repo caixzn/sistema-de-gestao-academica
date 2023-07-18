@@ -21,5 +21,4 @@ export const cursoRel = relations(curso, ({ one, many }) => ({
     professores: many(professor)
 }));
 
-export type Curso = InferModel<typeof curso>;
-export type CursoCreate = InferModel<typeof curso, 'insert'>;
+export type CursoSchema = InferModel<typeof curso, 'insert'>;

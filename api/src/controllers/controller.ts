@@ -1,6 +1,6 @@
-export default interface Route {
+export default interface Controller {
     create(): boolean;
-    find(): boolean;
+    findById(): boolean;
     findAll(): boolean;
     update(): boolean;
     delete(): boolean;

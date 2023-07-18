@@ -17,5 +17,4 @@ export const campusRel = relations(campus, ({ one, many }) => ({
     })
 }));
 
-export type Campus = InferModel<typeof campus>;
-export type CampusCreate = InferModel<typeof campus, 'insert'>;
+export type CampusSchema = InferModel<typeof campus, 'insert'>;

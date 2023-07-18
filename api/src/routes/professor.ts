@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { ProfessorCreate } from "../db/models/professor.js";
+import { ProfessorCreate } from "../models/professor.js";
 
 export default async function professor(server: FastifyInstance, opt: any) {
     server.post<{ Body: ProfessorCreate }>('/professor', async (request) => {

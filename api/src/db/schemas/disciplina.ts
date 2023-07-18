@@ -1,9 +1,11 @@
 import { InferModel, relations } from "drizzle-orm";
 import { bigint, mysqlTable, primaryKey, varchar } from "drizzle-orm/mysql-core";
+import { oferta } from "./oferta.js";
 
 export const disciplina = mysqlTable('disciplina', {
     id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
-    nome: varchar('nome', { length: 256 })
+    nome: varchar('nome', { length: 256 }),
+    descricao: varchar('descricao', { length: 256 }),
 });
 
 export const preRequisito = mysqlTable('disciplina_pre_requisito', {
@@ -14,15 +16,16 @@ export const preRequisito = mysqlTable('disciplina_pre_requisito', {
 }));
 
 export const disciplinaRel = relations(disciplina, ({ many }) => ({
-    preRequisito: many(preRequisito)
+    preRequisitos: many(preRequisito),
+    ofertas: many(oferta)
 }));
 
-export const disciplinaPreRequisitoRel = relations(preRequisito, ({ one }) => ({
+export const preRequisitoRel = relations(preRequisito, ({ one }) => ({
     disciplina: one(disciplina, {
         fields: [preRequisito.disciplinaId],
         references: [disciplina.id]
     })
 }));
 
-export type Disciplina = InferModel<typeof disciplina>;
-export type DisciplinaCreate = InferModel<typeof disciplina, 'insert'>;
+export type DisciplinaSchema = InferModel<typeof disciplina, 'insert'>;
+export type PreRequisitoSchema = InferModel<typeof preRequisito, 'insert'>;

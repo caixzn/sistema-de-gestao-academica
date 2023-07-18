@@ -28,5 +28,4 @@ export const enderecoRel = relations(endereco, ({ one }) => ({
     })
 }));
 
-export type Endereco = InferModel<typeof endereco>;
-export type EnderecoCreate = InferModel<typeof endereco, 'insert'>;
+export type EnderecoSchema = InferModel<typeof endereco, 'insert'>;
