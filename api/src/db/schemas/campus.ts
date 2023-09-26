@@ -4,9 +4,9 @@ import { endereco } from "./endereco.js";
 import { curso } from "./curso.js";
 
 export const campus = mysqlTable('campus', {
-    id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
+    id: bigint('id', { mode: 'number' }).unique().notNull().primaryKey().autoincrement(),
     nome: varchar('nome', { length: 256 }),
-    enderecoId: bigint('endereco_id', { mode: 'bigint'})
+    enderecoId: bigint('endereco_id', { mode: 'number'})
 });
 
 export const campusRel = relations(campus, ({ one, many }) => ({

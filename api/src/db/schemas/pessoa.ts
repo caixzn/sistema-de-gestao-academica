@@ -6,7 +6,7 @@ import { endereco } from './endereco.js';
 import { telefone } from './telefone.js';
 
 export const pessoa = mysqlTable('pessoa', {
-    id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
+    id: bigint('id', { mode: 'number' }).unique().notNull().primaryKey().autoincrement(),
     nome: varchar('nome', { length: 256 }),
     sobrenome: varchar('sobrenome', { length: 256 }),
     cpf: char('cpf', { length: 11 }).notNull().unique(),

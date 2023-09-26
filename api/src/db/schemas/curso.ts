@@ -6,9 +6,9 @@ import { professor } from "./professor.js";
 import { disciplina } from "./disciplina.js";
 
 export const curso = mysqlTable('curso', {
-    id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
+    id: bigint('id', { mode: 'number' }).unique().notNull().primaryKey().autoincrement(),
     nome: varchar('nome', { length: 256 }),
-    campusId: bigint('campus_id', { mode: 'bigint' })
+    campusId: bigint('campus_id', { mode: 'number' })
 });
 
 export const cursoRel = relations(curso, ({ one, many }) => ({

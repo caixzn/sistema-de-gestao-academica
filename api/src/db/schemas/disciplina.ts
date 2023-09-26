@@ -3,14 +3,14 @@ import { bigint, mysqlTable, primaryKey, varchar } from "drizzle-orm/mysql-core"
 import { oferta } from "./oferta.js";
 
 export const disciplina = mysqlTable('disciplina', {
-    id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
+    id: bigint('id', { mode: 'number' }).unique().notNull().primaryKey().autoincrement(),
     nome: varchar('nome', { length: 256 }),
     descricao: varchar('descricao', { length: 256 }),
 });
 
 export const preRequisito = mysqlTable('disciplina_pre_requisito', {
-    preRequisitoId: bigint('pre_requisito_id', { mode: 'bigint' }).notNull(),
-    disciplinaId: bigint('disciplina_id', { mode: 'bigint' }).notNull()
+    preRequisitoId: bigint('pre_requisito_id', { mode: 'number' }).notNull(),
+    disciplinaId: bigint('disciplina_id', { mode: 'number' }).notNull()
 }, (table) => ({
     pk: primaryKey(table.disciplinaId, table.preRequisitoId)
 }));

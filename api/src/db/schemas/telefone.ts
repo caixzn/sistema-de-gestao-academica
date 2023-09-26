@@ -3,8 +3,8 @@ import { pessoa } from "./pessoa.js";
 import { InferModel, relations } from "drizzle-orm";
 
 export const telefone = mysqlTable('telefone', {
-    id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
-    pessoaId: bigint('pessoa_id', { mode: 'bigint' }),
+    id: bigint('id', { mode: 'number' }).unique().notNull().primaryKey().autoincrement(),
+    pessoaId: bigint('pessoa_id', { mode: 'number' }),
     codPais: char('cod_pais', { length: 3 }).notNull(),
     ddd: varchar('ddd', { length: 16 }).notNull(),
     numero: varchar('numero', { length: 16 }).notNull(),

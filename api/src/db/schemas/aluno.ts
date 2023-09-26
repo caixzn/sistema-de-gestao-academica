@@ -5,7 +5,7 @@ import { curso } from "./curso.js";
 import { alunoCursaOferta } from "./oferta.js";
 
 export const aluno = mysqlTable('aluno', {
-    id: bigint('id', { mode: 'bigint' }).primaryKey().unique().notNull(),
+    id: bigint('id', { mode: 'number' }).primaryKey().unique().notNull(),
     dataNascimento: date('data_nascimento'),
     dataIngresso: date('data_ingresso')
 });
@@ -20,8 +20,8 @@ export const alunoRel = relations(aluno, ({ one, many }) => ({
 }));
 
 export const alunoCurso = mysqlTable('aluno_curso', {
-    alunoId: bigint('aluno_id', { mode: 'bigint' }).notNull(),
-    cursoId: bigint('curso_id', { mode: 'bigint' }).notNull()
+    alunoId: bigint('aluno_id', { mode: 'number' }).notNull(),
+    cursoId: bigint('curso_id', { mode: 'number' }).notNull()
 }, (table) => ({
     pk: primaryKey(table.alunoId, table.cursoId)
 }));

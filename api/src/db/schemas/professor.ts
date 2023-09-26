@@ -4,7 +4,7 @@ import { InferModel, relations } from "drizzle-orm";
 import { curso } from "./curso.js";
 
 export const professor = mysqlTable('professor', {
-    id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey(),
+    id: bigint('id', { mode: 'number' }).unique().notNull().primaryKey(),
     dataContratacao: date('data_contratacao'),
     departamento: varchar('departamento', { length: 256 }),
     salario: decimal('salario', { precision: 16, scale: 2 })
@@ -19,8 +19,8 @@ export const professorRel = relations(professor, ({ one, many }) => ({
 }));
 
 export const professorCurso = mysqlTable('professor_curso', {
-    professorId: bigint('professor_id', { mode: 'bigint' }).notNull(),
-    cursoId: bigint('curso_id', { mode: 'bigint' }).notNull()
+    professorId: bigint('professor_id', { mode: 'number' }).notNull(),
+    cursoId: bigint('curso_id', { mode: 'number' }).notNull()
 }, (table) => ({
     pk: primaryKey(table.professorId, table.cursoId)
 }));

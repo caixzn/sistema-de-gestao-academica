@@ -6,8 +6,8 @@ import { InferModel, relations } from "drizzle-orm";
 const UF = [ 'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'] as const;
 
 export const endereco = mysqlTable('endereco', {
-    id: bigint('id', { mode: 'bigint' }).unique().notNull().primaryKey().autoincrement(),
-    pessoaId: bigint('pessoa_id', { mode: 'bigint' }),
+    id: bigint('id', { mode: 'number' }).unique().notNull().primaryKey().autoincrement(),
+    pessoaId: bigint('pessoa_id', { mode: 'number' }),
     cep: char('cep', { length: 8 }),
     logradouro: varchar('logradouro', { length: 256 }),
     numero: varchar('numero', { length: 256 }),
